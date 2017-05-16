@@ -55,14 +55,14 @@ exports.search = function(req, res, next){
     var request = req.query;
     var lib = request.lib;
     var keyword = request.keyword;
-    console.log('searching....'+keyword);
+    console.log('searching in SoF...'+keyword);
     
     db.fetchFromSOF(lib,keyword, function(err, result){
         if(err){
             res.end();
             return;
         }
-        console.log(result);
+        //console.log(result);
         var list = [];
         var re = {};
         
@@ -70,9 +70,29 @@ exports.search = function(req, res, next){
         res.json(re);
         res.end();
     })
+ 
+}
+
+exports.searchFromDoc = function(req, res, next){
+    var request = req.query;
+    var lib = request.lib;
+    var keyword = request.keyword;
+    console.log('searching in Doc....'+keyword);
     
-  
-    
+    db.fetchFromAPIDOC(lib,keyword, function(err, result){
+        if(err){
+            res.end();
+            return;
+        }
+        //console.log(result);
+        var list = [];
+        var re = {};
+        
+        re['doc'] = result;
+        res.json(re);
+        res.end();
+    })
+ 
 }
 
 exports.getLib = function(req, res ,next){
@@ -83,7 +103,7 @@ exports.getLib = function(req, res ,next){
             res.end();
             return;
         }
-        console.log(result);
+        //console.log(result);
         var list = [];
         var re = {};
         

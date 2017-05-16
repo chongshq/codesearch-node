@@ -8,6 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/q', esController.search);
+router.get('/qFromDoc', esController.searchFromDoc)
 router.get('/esquery', esController.searchES);
 router.get('/lib', esController.getLib);
 
