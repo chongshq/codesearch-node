@@ -63,8 +63,8 @@ exports.fetchFromAPIDOC = function (table, keyword, callback){
                            {  
                                score: { $meta: "textScore" } 
                             })
-                         .limit(5)
                          .sort( { score: { $meta: "textScore" } } )
+                         .limit(5)
                          .toArray(function(err,docs){
                             console.log('find');
                             console.log(err);

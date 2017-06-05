@@ -8,8 +8,9 @@ var db = require('../utils/mongo');
 
 exports.searchES = function(req, res, next){
     var request = req.query;
-
+    var lib = request.lib;
     var keyword = request.keyword;
+    var requestURL = 'http://104.199.179.100:9200/data_db/sof_data_collection_'+lib+'/_search?q=' + keyword;
     console.log('searching....'+keyword);
     var options = {
         hostname: '104.199.179.100',
@@ -18,7 +19,7 @@ exports.searchES = function(req, res, next){
         method: 'GET'
     };
 
-    http.get('http://104.199.179.100:9200/data_db/sof_data_collection/_search?q='+keyword, function (response) {
+    http.get(requestURL, function (response) {
         // if(err){
         //     console.log(err);
         //     res.end();

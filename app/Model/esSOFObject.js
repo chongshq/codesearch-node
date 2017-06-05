@@ -8,5 +8,7 @@ exports.getItem = function(object){
     item['title'] = tempObject['title'].replace("\\n", "\n").replace(/\\r/g, "\\r");
     item['url'] = tempObject['url'].replace("\\n", "\n").replace(/\\r/g, "\\r");
     item['code'] = tempObject['code'].replace("\\n", "\n").replace(/\\r/g, "\\r");
+    item['question'] = tempObject['question'].replace("\\n", "\n").replace(/\\r/g, "\\r");
+    item['answer'] = tempObject['answer'].replace("\\n", "\n").replace(/\\r/g, "\\r");
     return item;
 }
